@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7006129196180670012}
   - component: {fileID: 3999579862087872983}
   - component: {fileID: 780142764}
+  - component: {fileID: 869239993}
   m_Layer: 3
   m_Name: model
   m_TagString: Untagged
@@ -99,6 +100,34 @@ CapsuleCollider2D:
   m_Offset: {x: 0.005343437, y: -0.0040727854}
   m_Size: {x: 1.0454533, y: 1.5220373}
   m_Direction: 0
+--- !u!114 &869239993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575504693740148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d973e46a015383948a5f7555982fd576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnDeath:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: GameManagerProxy, Assembly-CSharp
+        m_MethodName: EndGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  currentHealth: 5
 --- !u!1 &393894011592568433
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +183,7 @@ Rigidbody2D:
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 6200000, guid: 887db2c86436def409d6e599963808d8, type: 2}
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
