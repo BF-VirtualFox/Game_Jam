@@ -10,10 +10,6 @@ public class ParallaxBgHandler : MonoBehaviour
     [SerializeField] public GameObject cam;
     [SerializeField] public float parallaxEffect;
 
-    //public GameObject cam;
-
-    //public float parallaxEffect;
-    
     // Start is called before the first frame update
     void Start()
     {
