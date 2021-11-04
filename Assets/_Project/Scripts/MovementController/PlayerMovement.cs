@@ -19,6 +19,7 @@ public class PlayerMovement : MovementController
     {
         var v = rb.velocity;
         v.x = _direction.x * speed;
+        
         _canJump = groundCheck.IsGrounded();
         animator.SetBool("jump", !_canJump);
         if (_canJump && _jumpRequested)
