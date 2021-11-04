@@ -291,8 +291,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isPersistent: 1
-  objs:
-  - {fileID: 417055}
+  objs: []
   onEndGame:
     m_PersistentCalls:
       m_Calls:
