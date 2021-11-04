@@ -16,10 +16,19 @@ public class PlayerWeaponMovement : MovementController
     [SerializeField] private float range;
     [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private Transform player;
+    [SerializeField] private float intervalAttack;
+    [SerializeField] private int damage;
     
     private Vector2 _direction;
     private bool _jumpRequested;
     private bool _canJump;
+    private bool _canAttack;
+    private bool _attacking;
+
+    private void Start()
+    {
+        StartCoroutine(Attacking());
+    }
 
     private void FixedUpdate()
     {
@@ -63,14 +72,37 @@ public class PlayerWeaponMovement : MovementController
 
     public override void Attack()
     {
-        animator.SetTrigger("Attack");
-        
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, range, enemyLayers);
-
-        foreach (Collider2D enemy in hitEnemies)
+        _canAttack = true;
+        if (!_attacking)
         {
-            Debug.Log("test attack");
+            StartCoroutine(Attacking());
         }
+    }
+
+    private IEnumerator Attacking()
+    {
+        _attacking = true;
+        if (_canAttack)
+        {
+            animator.SetTrigger("attack");
+        
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, range, enemyLayers);
+
+            foreach (Collider2D enemy in hitEnemies)
+            {
+                enemy.attachedRigidbody.GetComponent<Health>().TakeDamage(damage);
+            }
+            
+            yield return new WaitForSeconds(intervalAttack);
+            _canAttack = false;
+            yield return null;
+        }
+        _attacking = false;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, range);
     }
 
     public void OnDrawGizmos()

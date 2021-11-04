@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1940466227301179411}
   m_Layer: 3
-  m_Name: attackPointRigth
+  m_Name: attackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,13 +47,28 @@ MonoBehaviour:
   groundCheck: {fileID: 7573983978988110832}
   animator: {fileID: 7573983978988110836}
   spriteRenderer: {fileID: 7573983978988110837}
-  attackPointLeft: {fileID: 0}
-  attackPointRigth: {fileID: 1940466227301179411}
-  range: 0.7
+  attackPoint: {fileID: 1940466227301179411}
+  range: 0.65
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128
   player: {fileID: 343781701467528390}
+  intervalAttack: 0.5
+  damage: 1
+--- !u!114 &6524873601180221181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7812433398451131865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261da3ba59bcf2f48bc2feaabb88d6af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initHealth: 3
+  animator: {fileID: 7573983978988110836}
 --- !u!1001 &7573983979258461096
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,9 +104,17 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 3bc182c9f0029bc41bde1124fd13ab3b, type: 3}
+    - target: {fileID: 8575504693740148, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 393894011592568433, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
       propertyPath: m_Name
       value: ---PlayerWeapon---
+      objectReference: {fileID: 0}
+    - target: {fileID: 393894011592568433, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7915474292051240814, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
       propertyPath: m_RootOrder
