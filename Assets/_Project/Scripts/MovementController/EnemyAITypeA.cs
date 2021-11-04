@@ -13,11 +13,17 @@ public class EnemyAITypeA : MovementController
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform target;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float range;
+    [SerializeField] private LayerMask heroLayers;
 
+    [SerializeField] private Raycaster groundDetection;
     private Vector2 _direction;
     private bool _jumpRequested;
     private bool _canJump;
     private bool _isAgro = false;
+    private float _sleepDuration;
+    public bool CanMove => _sleepDuration <= 0 && groundDetection.Query();
 
     
 
@@ -32,6 +38,22 @@ public class EnemyAITypeA : MovementController
             
     }
     
+    private void FixedUpdate()
+    {
+        PhysicsMove();
+    }
+
+    private void PhysicsMove()
+    {
+        if (CanMove)
+        {
+            var velocityAdjust = rb.velocity;
+            velocityAdjust.y = 0;
+            Debug.DrawRay(transform.position, _direction * speed, Color.magenta);
+            rb.AddForce(_direction * speed - velocityAdjust, ForceMode2D.Force);
+        }
+    }
+    /*
     private void FixedUpdate()
     {
         var v = rb.velocity;
@@ -59,10 +81,12 @@ public class EnemyAITypeA : MovementController
         rb.velocity = v;
         Debug.Log(_canJump);
     }
+    */
 
     private void Move()
     {
         _direction = target.position-transform.position;
+        //_direction.y = 0;
         _direction.Normalize();    
         var newPos = AsVector2(transform.position);
         newPos += _direction.normalized * Time.deltaTime * speed;
@@ -90,6 +114,18 @@ public class EnemyAITypeA : MovementController
     private static Vector2 AsVector2(Vector3 vector3)
     {
         return new Vector2(vector3.x, vector3.y);
+    }
+
+    public override void Attack()
+    {
+        animator.SetTrigger("attack");
+        
+        Collider2D[] hitHero = Physics2D.OverlapCircleAll(attackPoint.position, range, heroLayers);
+
+        foreach (Collider2D hero in hitHero)
+        {
+            Debug.Log("test attack");
+        }
     }
 }
 

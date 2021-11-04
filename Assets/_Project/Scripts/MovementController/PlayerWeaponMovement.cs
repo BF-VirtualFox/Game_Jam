@@ -72,4 +72,9 @@ public class PlayerWeaponMovement : MovementController
             Debug.Log("test attack");
         }
     }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(attackPoint.position, range);
+    }
 }
