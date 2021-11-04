@@ -1,41 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class GameManager : SingletonBehaviour<GameManager>, IGameManager
 {
-    [SerializeField] private string startScene;
-    
+    //[SerializeField] private string startScene;
     [SerializeField] private UnityEvent onEndGame;
+    [SerializeField] private LevelManager _levelManager;
+    //[SerializeField] private CinemachineBrain cam;
+    public LevelManager levelManager => _levelManager;
+
     
-    public void Quit()
-    {
-        Application.Quit();
-    }
-    
+    //SceneManager----------
     public void StartGame()
     {
         //Already a scene?
-        StartCoroutine(SwitchScene(startScene));
+        StartCoroutine(levelManager.NextScene());
     }
-
-    private IEnumerator SwitchScene(string newScene)
+    
+    public void Quit()
     {
-        if (SceneManager.sceneCount > 1)
-        {
-            var currentScene = SceneManager.GetActiveScene().name;
-            yield return SceneManager.UnloadSceneAsync(currentScene);
-            
-        }
-        
-        yield return SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
+        levelManager.Quit();
     }
-
+    
     public void EndGame()
     {
         onEndGame?.Invoke();
     }
+    public void NextLevel()
+    {
+        StartCoroutine(levelManager.NextScene());
+    }
+
+    public void MainMenu()
+    {
+        Destroy(gameObject);
+        levelManager.MainMenu();
+    }
+    //-------------
+    
+    
+    
 }

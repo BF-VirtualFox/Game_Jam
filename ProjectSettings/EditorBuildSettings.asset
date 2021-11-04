@@ -5,7 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/_Project/Scenes/Production/MainScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 1
+    path: Assets/_Project/Scenes/BorisD/PersistentSceneBor.unity
+    guid: 788d9e93c9a5eb344babcdb5123a3102
+  - enabled: 1
+    path: Assets/_Project/Scenes/BorisD/MainSceneBor.unity
+    guid: 96f321b76fa8b92458e9c3ec6ff62362
+  - enabled: 1
+    path: Assets/_Project/Scenes/BorisD/FakeLvl2.unity
+    guid: 1e8599ab9aaf7de428ff12c479a1d213
+  - enabled: 1
+    path: Assets/_Project/Scenes/BorisD/BorisDScene.unity
+    guid: 9f001e3da87811e47b58b65d294a577a
   m_configObjects: {}
