@@ -11,6 +11,8 @@ public class PlayerMovement : MovementController
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Transform player;
+
     private Vector2 _direction;
     private bool _jumpRequested;
     private bool _canJump;
@@ -28,10 +30,10 @@ public class PlayerMovement : MovementController
             _canJump = false;
         }
 
-        if(v.x < 0)
-            spriteRenderer.flipX = true;
+        if (v.x < 0)
+            player.localScale = new Vector3(-1, 1, 1);
         if(v.x > 0)
-            spriteRenderer.flipX = false;
+            player.localScale = new Vector3(1, 1, 1);
         
         animator.SetFloat("speed", Math.Abs(v.x));
         rb.velocity = v;
@@ -48,5 +50,10 @@ public class PlayerMovement : MovementController
         {
             _jumpRequested = true;
         }
+    }
+
+    public override void Attack()
+    {
+        throw new NotImplementedException();
     }
 }

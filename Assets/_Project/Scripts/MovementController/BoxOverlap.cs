@@ -6,9 +6,16 @@ public class BoxOverlap : MonoBehaviour
 {
     public Vector2 origin;
     public Vector2 size;
+    private float _x = 1f;
 
     public bool Check(Vector2 offset, LayerMask layers)
     {
+        var tmp = transform.localScale.x;
+        if (tmp != _x)
+        {
+            _x = tmp;
+            origin.x = -origin.x;
+        }
         return Physics2D.OverlapBox(origin + offset, size, 0f, layers);
     }
 
