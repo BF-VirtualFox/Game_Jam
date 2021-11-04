@@ -48,21 +48,18 @@ public class PlayerManager : MonoBehaviour
     public void PlayerCreation()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
-        Debug.Log(Player);
         DontDestroyOnLoad(Player);
     }
 
     //Soit param soit find
-    public void ReAffectPlayer(Transform SpawnPoint)
+    public void ReAffectPlayer()
     {
-
         spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
-        
+        Player.transform.position = spawnPoint.position;
     }
 
     public void DestroyPlayer()
     {
-        Debug.Log(Player.name);
         GameObject obj = GameObject.Find(Player.name);
         
         Destroy(Player);

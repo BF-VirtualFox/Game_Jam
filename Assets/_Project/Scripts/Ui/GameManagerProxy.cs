@@ -30,8 +30,12 @@ public class GameManagerProxy : MonoBehaviour, IGameManager
         GameManager.instance.MainMenu();
     }
 
-    public static void AskAPlayer(Transform SpawnPoint)
+    public static void AskAPlayer()
     {
-        GameManager.instance.AskAPlayer(SpawnPoint);
+        GameManager.instance.AskAPlayer();
+    }
+    public static void AskACamera()
+    {
+        GameManager.instance.AskACamera();
     }
 }

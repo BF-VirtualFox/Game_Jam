@@ -11,7 +11,6 @@ public class LevelManager : MonoBehaviour
     public IEnumerator NextScene()
     {
         //desactiver la scene courrant et activer la nouvel
-        Debug.Log(SceneManager.sceneCount);
         if (SceneManager.sceneCount > 1)
         {
             yield return SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
@@ -22,8 +21,6 @@ public class LevelManager : MonoBehaviour
 
         yield return SceneManager.LoadSceneAsync(currentScene, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(currentScene));
-        Debug.Log(currentScene);
-
     }
     
     public void MainMenu()

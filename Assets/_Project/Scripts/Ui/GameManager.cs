@@ -16,6 +16,8 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     [SerializeField] private PlayerManager _playerManager;
     public PlayerManager playerManager => _playerManager;
     
+    [SerializeField] private CameraManager _cameraManager;
+    public CameraManager cameraManager => _cameraManager;
     
     //SceneManager----------
     public void StartGame()
@@ -43,20 +45,15 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         if (playerManager.getPlayer())
         {
             playerManager.DestroyPlayer();
+            cameraManager.DestroyCamera();
         }
 //        Destroy(gameObject);
         levelManager.MainMenu();
     }
     //PlayerManager-------------
 
-    //First creation of the player
-
-    
-
-
-    public void AskAPlayer(Transform SpawnPoint)
+    public void AskAPlayer()
     {
-        Debug.Log(SpawnPoint.position);
         if (playerManager.getPlayer() == null)
         {
             playerManager.PlayerCreation();
@@ -64,7 +61,20 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         else
         {
             
-            playerManager.ReAffectPlayer(SpawnPoint);
+            playerManager.ReAffectPlayer();
         }
     }
+    //CameraManager-----
+    
+    //I Could Refactor AskAPlayer && AskACamera
+    public void AskACamera()
+    {
+        if (cameraManager.GetCamera() == null)
+            cameraManager.CameraCreation();
+        else
+        {
+            cameraManager.ReAffectPlayer();
+        }
+    }
+
 }
