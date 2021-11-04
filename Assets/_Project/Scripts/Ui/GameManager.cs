@@ -12,7 +12,10 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     [SerializeField] private LevelManager _levelManager;
     //[SerializeField] private CinemachineBrain cam;
     public LevelManager levelManager => _levelManager;
-
+    
+    [SerializeField] private PlayerManager _playerManager;
+    public PlayerManager playerManager => _playerManager;
+    
     
     //SceneManager----------
     public void StartGame()
@@ -37,11 +40,31 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
 
     public void MainMenu()
     {
-        Destroy(gameObject);
+        if (playerManager.getPlayer())
+        {
+            playerManager.DestroyPlayer();
+        }
+//        Destroy(gameObject);
         levelManager.MainMenu();
     }
-    //-------------
+    //PlayerManager-------------
+
+    //First creation of the player
+
     
-    
-    
+
+
+    public void AskAPlayer(Transform SpawnPoint)
+    {
+        Debug.Log(SpawnPoint.position);
+        if (playerManager.getPlayer() == null)
+        {
+            playerManager.PlayerCreation();
+        }
+        else
+        {
+            
+            playerManager.ReAffectPlayer(SpawnPoint);
+        }
+    }
 }

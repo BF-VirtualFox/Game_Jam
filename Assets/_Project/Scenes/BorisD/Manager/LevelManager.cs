@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,13 +25,20 @@ public class LevelManager : MonoBehaviour
         Debug.Log(currentScene);
 
     }
-
-    //TO DO
+    
     public void MainMenu()
     {
-        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        if (SceneManager.sceneCount > 1)
+            SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
+        gameUi.SetActive(true);
         currentScene = 0;
-        SceneManager.LoadSceneAsync(0);
+      //  SceneManager.LoadSceneAsync(0);
+    }
+    
+    //Simply display ResumeMenu
+    public void Resume()
+    {
+        //TODO
     }
     
     //
@@ -54,9 +60,4 @@ public class LevelManager : MonoBehaviour
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
     }
     
-    //Manage the end of a level
-    
-    //I need to save my Player 
-    
-   
 }

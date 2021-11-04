@@ -29,4 +29,9 @@ public class GameManagerProxy : MonoBehaviour, IGameManager
     {
         GameManager.instance.MainMenu();
     }
+
+    public static void AskAPlayer(Transform SpawnPoint)
+    {
+        GameManager.instance.AskAPlayer(SpawnPoint);
+    }
 }
