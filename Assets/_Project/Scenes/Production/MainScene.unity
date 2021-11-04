@@ -130,10 +130,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4768180084238103624, guid: a01fd66ea39bb1346b6f799222fa646c, type: 3}
-      propertyPath: orthographic size
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 4768180084238103627, guid: a01fd66ea39bb1346b6f799222fa646c, type: 3}
       propertyPath: m_Name
       value: Main Camera
@@ -248,10 +244,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 869239993, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
-      propertyPath: OnDeath.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1978991757}
     - target: {fileID: 393894011592568433, guid: 20908d5fcee1d0e498c259fe834424a1, type: 3}
       propertyPath: m_Name
       value: ---Player---
@@ -362,10 +354,6 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 869239992}
-    - target: {fileID: 6645575925426741634, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1.9899167
-      objectReference: {fileID: 0}
     - target: {fileID: 9217337282788409225, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
       propertyPath: m_Name
       value: ---Camera---
