@@ -1,18 +1,22 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 
-public class PlayerMovement : MovementController
+public class PlayerWeaponMovement : MovementController
 {
     [SerializeField] private int speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private Animator animator;
     [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float range;
+    [SerializeField] private LayerMask enemyLayers;
     [SerializeField] private Transform player;
-
+    
     private Vector2 _direction;
     private bool _jumpRequested;
     private bool _canJump;
@@ -30,10 +34,15 @@ public class PlayerMovement : MovementController
             _canJump = false;
         }
 
-        if (v.x < 0)
-            player.localScale = new Vector3(-1, 1, 1);
-        if(v.x > 0)
-            player.localScale = new Vector3(1, 1, 1);
+        if(v.x < 0)
+        {
+            player.localScale = new Vector3(-1, 1,1);
+        }
+
+        if (v.x > 0)
+        {
+            player.localScale = new Vector3(1, 1,1);
+        }
         
         animator.SetFloat("speed", Math.Abs(v.x));
         rb.velocity = v;
@@ -54,6 +63,13 @@ public class PlayerMovement : MovementController
 
     public override void Attack()
     {
-        throw new NotImplementedException();
+        animator.SetTrigger("Attack");
+        
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, range, enemyLayers);
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            Debug.Log("test attack");
+        }
     }
 }
