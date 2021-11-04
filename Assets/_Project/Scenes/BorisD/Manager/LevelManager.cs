@@ -32,7 +32,7 @@ public class LevelManager : MonoBehaviour
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         gameUi.SetActive(true);
         currentScene = 0;
-      //  SceneManager.LoadSceneAsync(0);
+      //SceneManager.LoadSceneAsync(0);
     }
     
     //Simply display ResumeMenu
