@@ -21,7 +21,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        Debug.Log("jsuis mort wesh");
         animator.SetTrigger("die");
+        Destroy(gameObject,1f);
     }
 }
