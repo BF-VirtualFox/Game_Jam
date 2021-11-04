@@ -7,50 +7,46 @@ using UnityEngine;
 public class EnemyAITypeA : MovementController
 {
     [SerializeField] private int speed;
-    [SerializeField] private Transform enemy;
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private Transform target;
+    [SerializeField] private Transform hero;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float range;
     [SerializeField] private LayerMask heroLayers;
-
-    [SerializeField] private Raycaster groundDetection;
-    private Vector2 _direction;
+    
     private bool _jumpRequested;
     private bool _canJump;
     private bool _isAgro = false;
     private float _sleepDuration;
-    public bool CanMove => _sleepDuration <= 0 && groundDetection.Query();
+    private Vector2 _direction;
+    private Vector2 _velocity;
 
     
 
     void Update()
     {
-        //Fire();
-        Debug.Log(_isAgro);
-        if (_isAgro)
-        {
-            Move();
-        }
-            
+        _direction = hero.position - transform.position;
+        _direction.Normalize();
     }
     
     private void FixedUpdate()
     {
-        PhysicsMove();
-    }
-
-    private void PhysicsMove()
-    {
-        if (CanMove)
+        _velocity = rb.velocity;
+        if (_isAgro)
         {
-            var velocityAdjust = rb.velocity;
-            velocityAdjust.y = 0;
-            Debug.DrawRay(transform.position, _direction * speed, Color.magenta);
-            rb.AddForce(_direction * speed - velocityAdjust, ForceMode2D.Force);
+            Move(_direction);
+        }
+        
+        if(_velocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1,1);
+        }
+
+        if (_velocity.x > 0)
+        {
+            transform.localScale = new Vector3(1, 1,1);
         }
     }
     /*
@@ -83,19 +79,12 @@ public class EnemyAITypeA : MovementController
     }
     */
 
-    private void Move()
+    public override void Move(Vector2  direction)
     {
-        _direction = target.position-transform.position;
-        //_direction.y = 0;
-        _direction.Normalize();    
-        var newPos = AsVector2(transform.position);
-        newPos += _direction.normalized * Time.deltaTime * speed;
-        transform.position = newPos;
-    }
-
-    public override void Move(Vector2 direction)
-    {
-        throw new NotImplementedException();
+        animator.SetFloat("speed", Math.Abs(_velocity.x));
+        var velocityAdjust = rb.velocity;
+        velocityAdjust.y = 0;
+        rb.AddForce(_direction * speed - velocityAdjust, ForceMode2D.Force);
     }
 
     public override void Jump()
@@ -108,12 +97,8 @@ public class EnemyAITypeA : MovementController
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag(target.tag)) _isAgro = true;    
-    }
-
-    private static Vector2 AsVector2(Vector3 vector3)
-    {
-        return new Vector2(vector3.x, vector3.y);
+        if(other.CompareTag(hero.tag)) 
+            _isAgro = true;    
     }
 
     public override void Attack()
