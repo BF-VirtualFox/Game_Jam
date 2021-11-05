@@ -10,21 +10,7 @@ public class FootstepsHandler : MonoBehaviour
     [SerializeField] private AudioSource sound3;
     [SerializeField] private AudioSource sound4;
     [SerializeField] private AudioSource sound5;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     
-    
-
     public void Footstep1()
     {
         sound1.Play();
