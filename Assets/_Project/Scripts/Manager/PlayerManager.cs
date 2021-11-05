@@ -8,7 +8,7 @@ public class PlayerManager : MonoBehaviour
     public Transform spawnPoint;
     //IsArmed?
     [FormerlySerializedAs("Instance")] public GameObject Player;
-    private PlayerMovement playerMovement;
+    private MovementController playerMovement;
     //the health ui?
     private GameObject HealthUi;
     
@@ -16,7 +16,7 @@ public class PlayerManager : MonoBehaviour
     public void Setup()
     {
         //Set Player spawnPoint
-        playerMovement = Player.GetComponent<PlayerMovement>();
+        playerMovement = Player.GetComponent<MovementController>();
         HealthUi = Player.GetComponentInChildren<Canvas>().gameObject;
     }
 
@@ -54,9 +54,23 @@ public class PlayerManager : MonoBehaviour
     //Soit param soit find
     public void ReAffectPlayer()
     {
+        var players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (var player in players)
+        {
+            if (player == Player) continue;
+            //Don't forget to destroy the GameObject scripts
+            //Destroy(Player.GetComponent<PlayerMovement>());
+            Destroy(Player);
+            Player = player;
+            DontDestroyOnLoad(player);
+            break;
+        }
+        
         spawnPoint = GameObject.FindGameObjectWithTag("Respawn").transform;
         Player.transform.position = spawnPoint.position;
     }
+    
+    
 
     public void DestroyPlayer()
     {

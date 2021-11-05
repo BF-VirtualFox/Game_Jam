@@ -110,9 +110,9 @@ public class EnemyAITypeA : MovementController
         
             Collider2D[] hitHero = Physics2D.OverlapCircleAll(attackPoint.position, range, heroLayers);
 
-            foreach (Collider2D enemy in hitHero)
+            foreach (Collider2D hero in hitHero)
             {
-                enemy.attachedRigidbody.GetComponent<Health>().TakeDamage(damage);
+                hero.attachedRigidbody.GetComponent<Health>().TakeDamage(damage);
             }
             
             yield return new WaitForSeconds(intervalAttack);
