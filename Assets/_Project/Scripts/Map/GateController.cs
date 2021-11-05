@@ -10,7 +10,6 @@ public class GateController : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (heroLayers == (heroLayers | 1 << other.gameObject.layer))
-            //proxy
-            return;
+            proxy.NextLevel();
     }
 }

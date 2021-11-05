@@ -38,4 +38,14 @@ public class GameManagerProxy : MonoBehaviour, IGameManager
     {
         GameManager.instance.AskACamera();
     }
+
+    public void MenuInGame()
+    {
+        GameManager.instance.MenuInGame();
+    }
+
+    public void DieMenu()
+    {
+        GameManager.instance.DieMenu();
+    }
 }
