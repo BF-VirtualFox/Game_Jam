@@ -15,7 +15,6 @@ public class Health : MonoBehaviour, IDamageable
     public void TakeDamage(int damage)
     {
         _currentHealth -= damage;
-        Debug.Log("1 damage");
         if (_currentHealth <= 0)
             Die();
     }
