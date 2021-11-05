@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Production/MainScene.unity
     guid: 96f321b76fa8b92458e9c3ec6ff62362
   - enabled: 1
+    path: Assets/_Project/Scenes/Samy/MapCave1.unity
+    guid: b1687cd97c30d0e49911ae8aa08b6073
+  - enabled: 1
     path: Assets/_Project/Scenes/Production/MapCave01.unity
     guid: 67202281ec8ab1a4e892666f3f4bca06
   - enabled: 1

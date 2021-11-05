@@ -47,7 +47,6 @@ public class PlayerManager : MonoBehaviour
 
     public void PlayerCreation()
     {
-        Debug.Log("iciii");
         Player = GameObject.FindGameObjectWithTag("Player");
         DontDestroyOnLoad(Player);
     }
@@ -55,15 +54,12 @@ public class PlayerManager : MonoBehaviour
     //Soit param soit find
     public void ReAffectPlayer()
     {
-        Debug.Log("La");
-
         var players = GameObject.FindGameObjectsWithTag("Player");
         foreach (var player in players)
         {
-            Debug.Log(player);
             if (player == Player) continue;
             //Don't forget to destroy the GameObject scripts
-            Destroy(Player.GetComponent<PlayerMovement>());
+            //Destroy(Player.GetComponent<PlayerMovement>());
             Destroy(Player);
             Player = player;
             DontDestroyOnLoad(player);
