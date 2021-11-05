@@ -104,9 +104,4 @@ public class PlayerWeaponMovement : MovementController
     {
         Gizmos.DrawWireSphere(attackPoint.position, range);
     }
-
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(attackPoint.position, range);
-    }
 }

@@ -9,31 +9,50 @@ public class EnemyAITypeA : MovementController
     [SerializeField] private int speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
-    [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform hero;
     [SerializeField] private Transform attackPoint;
+    [SerializeField] private Transform detectionPoint;
     [SerializeField] private float range;
     [SerializeField] private LayerMask heroLayers;
+    [SerializeField] private LayerMask groundLayers;
+    [SerializeField] private int damage;
+    [SerializeField] private float intervalAttack;
+    [SerializeField] private float rangeDetection;
     
-    private bool _jumpRequested;
-    private bool _canJump;
     private bool _isAgro = false;
-    private float _sleepDuration;
+    private bool _canAttack;
+    private bool _attacking;
     private Vector2 _direction;
     private Vector2 _velocity;
-
     
 
+    //Si l'ennemie tue le jouer cela renvoie une erreur -> voir si c'est ici qu'il faut gérer ça
     void Update()
     {
-        _direction = hero.position - transform.position;
-        _direction.Normalize();
+        if (hero)
+        {
+            _direction = hero.position - transform.position;
+            _direction.Normalize();
+        }
+        else
+            Destroy(gameObject);
     }
     
     private void FixedUpdate()
     {
         _velocity = rb.velocity;
+        
+        if(Physics2D.Raycast(detectionPoint.position, new Vector2(transform.localScale.x,0f), rangeDetection, heroLayers))
+        {
+            Attack();
+        }
+        
+        if(Physics2D.Raycast(detectionPoint.position, new Vector2(transform.localScale.x,0f), rangeDetection, groundLayers))
+        {
+            Jump();
+        }
+
         if (_isAgro)
         {
             Move(_direction);
@@ -49,35 +68,12 @@ public class EnemyAITypeA : MovementController
             transform.localScale = new Vector3(1, 1,1);
         }
     }
-    /*
-    private void FixedUpdate()
+
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        var v = rb.velocity;
-        v.x = _direction.x * speed;
-        _canJump = groundCheck.IsGrounded();
-        animator.SetBool("jump", !_canJump);
-        if (_canJump && _jumpRequested)
-        {
-            v.y = jumpPower;
-            _jumpRequested = false;
-            _canJump = false;
-        }
-
-        if(v.x < 0)
-        {
-            enemy.localScale = new Vector3(-1, 1,1);
-        }
-
-        if (v.x > 0)
-        {
-            enemy.localScale = new Vector3(1, 1,1);
-        }
-        
-        animator.SetFloat("speed", Math.Abs(v.x));
-        rb.velocity = v;
-        Debug.Log(_canJump);
+        if (heroLayers == (heroLayers | 1 << other.gameObject.layer))
+            _isAgro = true;
     }
-    */
 
     public override void Move(Vector2  direction)
     {
@@ -89,28 +85,42 @@ public class EnemyAITypeA : MovementController
 
     public override void Jump()
     {
-        if (_canJump)
-        {
-            _jumpRequested = true;
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if(other.CompareTag(hero.tag)) 
-            _isAgro = true;    
+        rb.AddForce(new Vector2(0f, 1f) * jumpPower, ForceMode2D.Impulse);
     }
 
     public override void Attack()
     {
-        animator.SetTrigger("attack");
-        
-        Collider2D[] hitHero = Physics2D.OverlapCircleAll(attackPoint.position, range, heroLayers);
-
-        foreach (Collider2D hero in hitHero)
+        _canAttack = true;
+        if (!_attacking)
         {
-            Debug.Log("test attack");
+            StartCoroutine(Attacking());
         }
+    }
+
+    private IEnumerator Attacking()
+    {
+        _attacking = true;
+        if (_canAttack)
+        {
+            animator.SetTrigger("attack");
+        
+            Collider2D[] hitHero = Physics2D.OverlapCircleAll(attackPoint.position, range, heroLayers);
+
+            foreach (Collider2D enemy in hitHero)
+            {
+                enemy.attachedRigidbody.GetComponent<Health>().TakeDamage(damage);
+            }
+            
+            yield return new WaitForSeconds(intervalAttack);
+            _canAttack = false;
+            yield return null;
+        }
+        _attacking = false;
+    }
+
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(detectionPoint.position, new Vector2(transform.localScale.x,0f) * rangeDetection);
     }
 }
 
