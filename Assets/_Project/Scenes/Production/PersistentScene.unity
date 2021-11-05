@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 169532713}
-  MainMenuCamera: {fileID: 0}
+  MainMenuCamera: {fileID: 169532713}
 --- !u!4 &560850128
 Transform:
   m_ObjectHideFlags: 0
@@ -502,14 +502,14 @@ PrefabInstance:
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1345170018}
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetActive
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName

@@ -81,12 +81,14 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     {
         //Display the main menu in game
         //I need to disable the control, disable the rest ?
+        Debug.Log("ceci est le menu in game");
     }
 
     public void DieMenu()
     {
         //Display the die menu
-        levelManager.DisplayDieMenu();
+        //levelManager.DisplayDieMenu();
+        Debug.Log("ceci est le die menu");
     }
 
 }
