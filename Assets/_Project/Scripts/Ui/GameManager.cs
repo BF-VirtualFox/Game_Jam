@@ -47,6 +47,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
             playerManager.DestroyPlayer();
             cameraManager.DestroyCamera();
         }
+
 //        Destroy(gameObject);
         levelManager.MainMenu();
     }
@@ -74,6 +75,20 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         {
             cameraManager.ReAffectCamera();
         }
+    }
+
+    public void MenuInGame()
+    {
+        //Display the main menu in game
+        //I need to disable the control, disable the rest ?
+        Debug.Log("ceci est le menu in game");
+    }
+
+    public void DieMenu()
+    {
+        //Display the die menu
+        //levelManager.DisplayDieMenu();
+        Debug.Log("ceci est le die menu");
     }
 
 }

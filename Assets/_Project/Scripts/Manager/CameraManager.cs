@@ -6,6 +6,7 @@ using UnityEngine;
 public class CameraManager : MonoBehaviour
 {
     [SerializeField] public GameObject Camera;
+    [SerializeField] public GameObject MainMenuCamera;
     
     public void CameraCreation()
     {
@@ -21,7 +22,7 @@ public class CameraManager : MonoBehaviour
         foreach (var cam in cameras)   
         {
             if (cam == Camera) continue;
-            Destroy(Camera);
+            if (Camera.tag.Equals("MainCamera")) Destroy(Camera);
             Camera = cam;
             DontDestroyOnLoad(cam);
             break;
@@ -40,5 +41,6 @@ public class CameraManager : MonoBehaviour
         Destroy(Camera);
         Camera = null;
     }
+    
     
 }

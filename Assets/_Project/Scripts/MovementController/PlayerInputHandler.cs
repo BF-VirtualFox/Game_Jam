@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 public class PlayerInputHandler : MonoBehaviour
 {
     [SerializeField] private MovementController movementCtrl;
+    [SerializeField] private GameManagerProxy proxy;
     private PlayerInputs _playerInputs;
 
     private void Awake()
@@ -15,11 +16,13 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputs.Player.Enable();
         _playerInputs.Player.Jump.performed += Jump;
         _playerInputs.Player.Attack.performed += Attack;
+        _playerInputs.Player.Menu.performed += Menu;
     }
 
     private void Attack(InputAction.CallbackContext context)
     {
-        movementCtrl.Attack();
+        if(movementCtrl.haveAttack)
+            movementCtrl.Attack();
     }
 
     private void Update()
@@ -32,5 +35,10 @@ public class PlayerInputHandler : MonoBehaviour
     private void Jump(InputAction.CallbackContext context)
     {
         movementCtrl.Jump();
+    }
+
+    private void Menu(InputAction.CallbackContext context)
+    {
+        proxy.MenuInGame();
     }
 }

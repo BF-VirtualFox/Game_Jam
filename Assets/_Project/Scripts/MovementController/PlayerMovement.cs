@@ -17,6 +17,11 @@ public class PlayerMovement : MovementController
     private bool _jumpRequested;
     private bool _canJump;
 
+    private void Start()
+    {
+        haveAttack = false;
+    }
+
     private void FixedUpdate()
     {
         var v = rb.velocity;

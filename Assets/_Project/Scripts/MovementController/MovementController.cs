@@ -10,6 +10,7 @@ public abstract class MovementController : MonoBehaviour
     private Rigidbody2D _rb;
 
     protected Rigidbody2D rb => _rb;
+    public bool haveAttack;
 
     protected void Awake()
     {
