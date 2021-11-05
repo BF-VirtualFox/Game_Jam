@@ -4,4 +4,8 @@
     void StartGame();
 
     void EndGame();
+    void NextLevel();
+
+    void MainMenu();
+
 }
