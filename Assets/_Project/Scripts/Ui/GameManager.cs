@@ -60,7 +60,6 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         }
         else
         {
-            
             playerManager.ReAffectPlayer();
         }
     }
@@ -73,7 +72,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
             cameraManager.CameraCreation();
         else
         {
-            cameraManager.ReAffectPlayer();
+            cameraManager.ReAffectCamera();
         }
     }
 

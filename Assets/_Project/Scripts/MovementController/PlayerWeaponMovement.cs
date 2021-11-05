@@ -73,10 +73,10 @@ public class PlayerWeaponMovement : MovementController
     public override void Attack()
     {
         _canAttack = true;
-        if (!_attacking)
-        {
-            StartCoroutine(Attacking());
-        }
+            if (!_attacking)
+            {
+                StartCoroutine(Attacking());
+            }
     }
 
     private IEnumerator Attacking()

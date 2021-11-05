@@ -167,6 +167,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &169532713 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1483581786, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+  m_PrefabInstance: {fileID: 1364299441}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &418953596 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 760047936742283065, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
@@ -201,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e98ca262645a05489d6fa6932263f05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Camera: {fileID: 0}
+  Camera: {fileID: 169532713}
 --- !u!4 &560850128
 Transform:
   m_ObjectHideFlags: 0
@@ -354,7 +359,7 @@ PrefabInstance:
       objectReference: {fileID: 1345170019}
     - target: {fileID: 4980611989786251394, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5055655716335015048, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_Pivot.x
