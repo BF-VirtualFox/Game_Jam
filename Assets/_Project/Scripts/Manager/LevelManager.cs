@@ -28,6 +28,7 @@ public class LevelManager : MonoBehaviour
         if (SceneManager.sceneCount > 1)
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
         gameUi.SetActive(true);
+        //Debug.Log(gameUi.transform.GetC);
         currentScene = 0;
       //SceneManager.LoadSceneAsync(0);
     }
@@ -43,18 +44,10 @@ public class LevelManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    private IEnumerator SwitchSceneByName(string newScene)
-    {
-        if (SceneManager.sceneCount > 1)
-        {
-            var currentScene = SceneManager.GetActiveScene().name;
-            yield return SceneManager.UnloadSceneAsync(currentScene);
-            
-        }
-        
-        yield return SceneManager.LoadSceneAsync(newScene, LoadSceneMode.Additive);
-        SceneManager.SetActiveScene(SceneManager.GetSceneByName(newScene));
-    }
     
+    public void DisplayDieMenu()
+    {
+        
+    }
+
 }

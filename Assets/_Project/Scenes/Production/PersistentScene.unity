@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 169532713}
+  MainMenuCamera: {fileID: 0}
 --- !u!4 &560850128
 Transform:
   m_ObjectHideFlags: 0
@@ -370,6 +371,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1483581786, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_Name
+      value: CanvaCamera
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483581786, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1483581786, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1483581787, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_LocalPosition.z
       value: -625
@@ -475,9 +488,37 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1345170019}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
 --- !u!1 &1454825962 stripped
@@ -602,9 +643,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7777415954702142266, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 9217337282788409225, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
       propertyPath: m_Name
       value: ---Camera---
+      objectReference: {fileID: 0}
+    - target: {fileID: 9217337282788409225, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 74c8393af1d8c8943969a815eee718e8, type: 3}
