@@ -23,6 +23,7 @@ public class EnemyAITypeA : MovementController
     private bool _isAgro = false;
     private bool _canAttack;
     private bool _attacking;
+    private bool _canMove;
     private Vector2 _direction;
     private Vector2 _velocity;
     
@@ -42,9 +43,12 @@ public class EnemyAITypeA : MovementController
     private void FixedUpdate()
     {
         _velocity = rb.velocity;
+        _canMove = true;
         
         if(Physics2D.Raycast(detectionPoint.position, new Vector2(transform.localScale.x,0f), rangeDetection, heroLayers))
         {
+            _canMove = false;
+            animator.SetFloat("speed", 0f);
             Attack();
         }
         
@@ -53,7 +57,7 @@ public class EnemyAITypeA : MovementController
             Jump();
         }
 
-        if (_isAgro)
+        if (_isAgro && _canMove)
         {
             Move(_direction);
         }
@@ -121,6 +125,7 @@ public class EnemyAITypeA : MovementController
     public void OnDrawGizmos()
     {
         Gizmos.DrawRay(detectionPoint.position, new Vector2(transform.localScale.x,0f) * rangeDetection);
+        Gizmos.DrawWireSphere(attackPoint.position, range);
     }
 }
 
