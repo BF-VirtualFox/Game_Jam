@@ -14,6 +14,12 @@ public class PlayerInputHandler : MonoBehaviour
         _playerInputs = new PlayerInputs();
         _playerInputs.Player.Enable();
         _playerInputs.Player.Jump.performed += Jump;
+        _playerInputs.Player.Attack.performed += Attack;
+    }
+
+    private void Attack(InputAction.CallbackContext context)
+    {
+        movementCtrl.Attack();
     }
 
     private void Update()

@@ -18,4 +18,24 @@ public class GameManagerProxy : MonoBehaviour, IGameManager
     {
         GameManager.instance.EndGame();
     }
+
+    public void NextLevel()
+    {
+        GameManager.instance.NextLevel();
+        
+    }
+
+    public void MainMenu()
+    {
+        GameManager.instance.MainMenu();
+    }
+
+    public static void AskAPlayer()
+    {
+        GameManager.instance.AskAPlayer();
+    }
+    public static void AskACamera()
+    {
+        GameManager.instance.AskACamera();
+    }
 }
