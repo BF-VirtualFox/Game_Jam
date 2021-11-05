@@ -6,24 +6,19 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [SerializeField] private Light2D ligth;
+    [SerializeField] private Light2D light;
     [SerializeField] private int initHealth;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameManagerProxy proxy;
 
     private int _currentHealth;
     public Image[] litTorches;
     public Image[] unlitTorches;
     private bool _isPlayer;
+    
     private void OnEnable()
     {
         _isPlayer = light != null;
-    [SerializeField] private GameManagerProxy proxy;
-    
-    private int _currentHealth;
-    private bool _isPlayer;
-    private void OnEnable()
-    {
-        _isPlayer = ligth != null;
         _currentHealth = initHealth;
     }
 
@@ -42,12 +37,6 @@ public class Health : MonoBehaviour, IDamageable
             }
             _currentHealth -= 1;
         }
-        _currentHealth -= damage;
-        if (_isPlayer)
-            ligth.pointLightOuterRadius -= damage;
-        if (_currentHealth <= 0)
-            Die();
-        
     }
 
     public void Heal(int pv)
@@ -61,11 +50,6 @@ public class Health : MonoBehaviour, IDamageable
                 _currentHealth++;
                 light.pointLightOuterRadius++;
             }
-            var newAmount = amount;
-            if (_currentHealth + amount > initHealth)
-                newAmount = initHealth - _currentHealth;
-            _currentHealth += newAmount;
-            ligth.pointLightOuterRadius += newAmount;
         }
     }
 
