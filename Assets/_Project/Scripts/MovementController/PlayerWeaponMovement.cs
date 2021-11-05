@@ -27,6 +27,7 @@ public class PlayerWeaponMovement : MovementController
 
     private void Start()
     {
+        haveAttack = true;
         StartCoroutine(Attacking());
     }
 

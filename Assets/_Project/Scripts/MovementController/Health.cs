@@ -5,6 +5,7 @@ public class Health : MonoBehaviour, IDamageable
 {
     [SerializeField] private int initHealth;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameManagerProxy proxy;
     private int _currentHealth;
 
     private void OnEnable()
@@ -21,6 +22,7 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        //proxy
         animator.SetTrigger("die");
         Destroy(gameObject,1f);
     }

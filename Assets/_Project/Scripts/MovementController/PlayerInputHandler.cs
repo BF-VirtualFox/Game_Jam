@@ -19,7 +19,8 @@ public class PlayerInputHandler : MonoBehaviour
 
     private void Attack(InputAction.CallbackContext context)
     {
-        movementCtrl.Attack();
+        if(movementCtrl.haveAttack)
+            movementCtrl.Attack();
     }
 
     private void Update()
