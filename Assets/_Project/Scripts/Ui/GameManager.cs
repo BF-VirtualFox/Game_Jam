@@ -19,16 +19,20 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     [SerializeField] private CameraManager _cameraManager;
     public CameraManager cameraManager => _cameraManager;
     
+    [SerializeField] private MenuManager _menuManager;
+    public MenuManager menuManager => _menuManager;
+    
     //SceneManager----------
     public void StartGame()
     {
         //Already a scene?
         StartCoroutine(levelManager.NextScene());
+        menuManager.NextScene(levelManager.GetCurrentScene());
     }
     
     public void Quit()
     {
-        levelManager.Quit();
+        menuManager.Quit();
     }
     
     public void EndGame()
@@ -50,6 +54,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
 
 //        Destroy(gameObject);
         levelManager.MainMenu();
+        menuManager.MenuScene();
     }
     //PlayerManager-------------
 
@@ -80,8 +85,8 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     public void MenuInGame()
     {
         //Display the main menu in game
-        //I need to disable the control, disable the rest ?
         Debug.Log("ceci est le menu in game");
+        menuManager.MenuInGame();
     }
 
     public void DieMenu()
@@ -89,6 +94,17 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         //Display the die menu
         //levelManager.DisplayDieMenu();
         Debug.Log("ceci est le die menu");
+        menuManager.DieMenu();
     }
-
+    
+    //Resume
+    public void Resume()
+    {
+        menuManager.Resume();
+    }
+    //Restart
+    public void Restart()
+    {
+        menuManager.Restart();
+    }
 }
