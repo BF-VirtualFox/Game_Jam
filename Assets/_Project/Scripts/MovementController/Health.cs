@@ -10,6 +10,7 @@ public class Health : MonoBehaviour, IDamageable
     [SerializeField] private int initHealth;
     [SerializeField] private Animator animator;
     [SerializeField] private GameManagerProxy proxy;
+    [SerializeField] private bool isBoss = false;
 
     private int _currentHealth;
     public Image[] litTorches;
@@ -55,6 +56,8 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Die()
     {
+        if(isBoss)
+            animator.SetBool("stun",false);
         animator.SetTrigger("die");
         if(_isPlayer)
             proxy.DieMenu();

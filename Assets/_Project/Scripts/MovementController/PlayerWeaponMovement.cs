@@ -11,7 +11,6 @@ public class PlayerWeaponMovement : MovementController
     [SerializeField] private float jumpPower;
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private float range;
     [SerializeField] private LayerMask enemyLayers;
