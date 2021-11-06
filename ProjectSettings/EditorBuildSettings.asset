@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Production/PersistentScene.unity
     guid: 788d9e93c9a5eb344babcdb5123a3102
   - enabled: 1
-    path: Assets/_Project/Scenes/Production/MainScene.unity
-    guid: 96f321b76fa8b92458e9c3ec6ff62362
-  - enabled: 1
     path: Assets/_Project/Scenes/Production/MapCave010.unity
     guid: b1687cd97c30d0e49911ae8aa08b6073
   - enabled: 1
+    path: Assets/_Project/Scenes/Production/MapBoss.unity
+    guid: 430021d8647222c4da2a627fd2cabc83
+  - enabled: 1
     path: Assets/_Project/Scenes/Production/MapCave02.unity
     guid: d8f4274d4e90b034f86ba2df2829ed22
+  - enabled: 1
+    path: Assets/_Project/Scenes/Production/MainScene.unity
+    guid: 96f321b76fa8b92458e9c3ec6ff62362
   m_configObjects: {}

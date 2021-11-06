@@ -98,6 +98,8 @@ public class MenuManager : MonoBehaviour
 
     public void ShowVictory()
     {
+        Canva.SetActive(true);
+        CanvaCamera.SetActive(false);
         Victory.SetActive(true);
     }
 
