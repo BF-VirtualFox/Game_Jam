@@ -262,6 +262,8 @@ MonoBehaviour:
   initHealth: 2
   animator: {fileID: 4972891647070022791}
   proxy: {fileID: 0}
+  litTorches: []
+  unlitTorches: []
 --- !u!1 &4972891647592021322
 GameObject:
   m_ObjectHideFlags: 0
