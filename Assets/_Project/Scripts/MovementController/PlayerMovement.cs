@@ -10,7 +10,6 @@ public class PlayerMovement : MovementController
     [SerializeField] private float jumpPower;
     [SerializeField] private GroundCheck groundCheck;
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform player;
 
     private Vector2 _direction;

@@ -9,7 +9,6 @@ public class EnemyAITypeA : MovementController
     [SerializeField] private int speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform hero;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private Transform detectionPoint;
