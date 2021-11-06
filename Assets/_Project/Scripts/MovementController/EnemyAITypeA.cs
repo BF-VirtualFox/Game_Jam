@@ -9,7 +9,6 @@ public class EnemyAITypeA : MovementController
     [SerializeField] private int speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private Animator animator;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Transform hero;
     [SerializeField] private Transform attackPoint;
     [SerializeField] private Transform detectionPoint;
@@ -19,7 +18,8 @@ public class EnemyAITypeA : MovementController
     [SerializeField] private int damage;
     [SerializeField] private float intervalAttack;
     [SerializeField] private float rangeDetection;
-    
+    [SerializeField] private AudioSource alertSound;
+
     private bool _isAgro = false;
     private bool _canAttack;
     private bool _attacking;
@@ -27,6 +27,7 @@ public class EnemyAITypeA : MovementController
     private Vector2 _direction;
     private Vector2 _velocity;
     
+
 
     //Si l'ennemie tue le jouer cela renvoie une erreur -> voir si c'est ici qu'il faut gérer ça
     void Update()
@@ -76,7 +77,10 @@ public class EnemyAITypeA : MovementController
     public void OnTriggerEnter2D(Collider2D other)
     {
         if (heroLayers == (heroLayers | 1 << other.gameObject.layer))
+        {
             _isAgro = true;
+            alertSound.Play();
+        }
     }
 
     public override void Move(Vector2  direction)
