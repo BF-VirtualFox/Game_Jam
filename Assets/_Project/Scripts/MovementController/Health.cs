@@ -65,7 +65,6 @@ public class Health : MonoBehaviour, IDamageable
         if (isBoss)
         {
             proxy.EndGame();
-            proxy.MainMenu();
         }
     }
 }

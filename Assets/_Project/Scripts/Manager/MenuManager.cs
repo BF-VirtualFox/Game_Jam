@@ -9,6 +9,8 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject InGameManager;
     [SerializeField] private GameObject DieMenuInGame;
     [SerializeField] private GameObject CanvaCamera;
+    [SerializeField] private GameObject Victory;
+
 
     private bool isOpen = false;
     private bool passByTheMenu = false;
@@ -92,6 +94,11 @@ public class MenuManager : MonoBehaviour
         DieMenuInGame.SetActive(false);
         //disable the canva
         Canva.SetActive(false);
+    }
+
+    public void ShowVictory()
+    {
+        Victory.SetActive(true);
     }
 
 }

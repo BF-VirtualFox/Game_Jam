@@ -37,6 +37,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     
     public void EndGame()
     {
+        menuManager.ShowVictory();
         onEndGame?.Invoke();
     }
     public void NextLevel()
