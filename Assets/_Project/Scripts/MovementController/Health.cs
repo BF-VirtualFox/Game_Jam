@@ -56,11 +56,16 @@ public class Health : MonoBehaviour, IDamageable
 
     private void Die()
     {
-        if(isBoss)
+        if (isBoss)
             animator.SetBool("stun",false);
         animator.SetTrigger("die");
         if(_isPlayer)
             proxy.DieMenu();
         Destroy(gameObject,1f);
+        if (isBoss)
+        {
+            proxy.EndGame();
+            proxy.MainMenu();
+        }
     }
 }

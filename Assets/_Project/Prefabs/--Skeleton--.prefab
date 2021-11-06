@@ -360,7 +360,6 @@ MonoBehaviour:
   speed: 5
   jumpPower: 1.5
   animator: {fileID: 4972891647070022791}
-  spriteRenderer: {fileID: 4972891647070022790}
   hero: {fileID: 0}
   attackPoint: {fileID: 1582650491}
   detectionPoint: {fileID: 298935193}
@@ -391,6 +390,7 @@ MonoBehaviour:
   initHealth: 2
   animator: {fileID: 4972891647070022791}
   proxy: {fileID: 0}
+  isBoss: 0
   litTorches: []
   unlitTorches: []
 --- !u!1 &4972891647592021322
