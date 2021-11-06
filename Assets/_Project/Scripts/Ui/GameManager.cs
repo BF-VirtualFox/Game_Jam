@@ -41,6 +41,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     }
     public void NextLevel()
     {
+        //check if player is in life
         StartCoroutine(levelManager.NextScene());
     }
 
@@ -49,8 +50,10 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
         if (playerManager.getPlayer())
         {
             playerManager.DestroyPlayer();
-            cameraManager.DestroyCamera();
         }
+        if(cameraManager.GetCamera())
+            cameraManager.DestroyCamera();
+
 
 //        Destroy(gameObject);
         levelManager.MainMenu();
@@ -85,14 +88,11 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     public void MenuInGame()
     {
         //Display the main menu in game
-        Debug.Log("ceci est le menu in game");
         menuManager.MenuInGame();
     }
 
     public void DieMenu()
     {
-        //Display the die menu
-        //levelManager.DisplayDieMenu();
         Debug.Log("ceci est le die menu");
         menuManager.DieMenu();
     }
@@ -106,5 +106,7 @@ public class GameManager : SingletonBehaviour<GameManager>, IGameManager
     public void Restart()
     {
         menuManager.Restart();
+        levelManager.Reset();
+        StartGame();
     }
 }

@@ -47,7 +47,6 @@ public class MenuManager : MonoBehaviour
             {
                 isOpen = false;
             }
-            Debug.Log("hello" + isOpen);
             Canva.SetActive(!isOpen);
             InGameManager.SetActive(!isOpen);
             isOpen = !isOpen;
@@ -73,22 +72,27 @@ public class MenuManager : MonoBehaviour
     
     public void DieMenu()
     {
-        DieMenuInGame.SetActive(true);
-    }
-    
-    public void DisplayDieMenu()
-    {
         
+        if (MainMenu.activeInHierarchy)
+        {
+            
+        }
+        else
+        {
+            
+            Canva.SetActive(true);
+            DieMenuInGame.SetActive(true);
+            CanvaCamera.SetActive(false);
+        }
     }
     
     public void Restart()
     {
-        MainMenu.SetActive(true);
+        CanvaCamera.SetActive(true);
+        DieMenuInGame.SetActive(false);
+        //disable the canva
+        Canva.SetActive(false);
     }
 
 }
-/*InGameManager.SetActive(false);
-        isOpen = !isOpen;
-        MainMenu.SetActive(true);
-        Canva.SetActive(true);
-        CanvaCamera.SetActive(true);*/
+
