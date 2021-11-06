@@ -35,4 +35,9 @@ public class LevelManager : MonoBehaviour
         currentScene = 0;
     }
 
+    public void Reset()
+    {
+        currentScene = 0;
+    }
+
 }

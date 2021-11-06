@@ -37,10 +37,12 @@ public class CameraManager : MonoBehaviour
     public void DestroyCamera()
     {
         //GameObject obj = GameObject.Find(Camera.name);
-        
+        Debug.Log("ici");
+        Debug.Log(Camera);
         Destroy(Camera);
+        Debug.Log(Camera);
+
         Camera = null;
     }
-    
-    
+
 }
