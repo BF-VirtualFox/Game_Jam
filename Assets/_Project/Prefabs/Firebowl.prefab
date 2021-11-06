@@ -221,3 +221,4 @@ MonoBehaviour:
   heroLayers:
     serializedVersion: 2
     m_Bits: 8
+  heal: 2

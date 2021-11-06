@@ -9,24 +9,18 @@ public class FirebowlActivator : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private Transform player;
     [SerializeField] private LayerMask heroLayers;
+    [SerializeField] private int heal;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    
+    private bool _canHeal = true;
+
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (heroLayers == (heroLayers | 1 << other.gameObject.layer))
+        if (heroLayers == (heroLayers | 1 << other.gameObject.layer) && _canHeal && light != null)
         {
-            if (light != null)
-            {
-                light.pointLightOuterRadius = 10;
-                animator.SetTrigger("onfire");
-                player.GetComponent<Health>().Heal(2);
-            }
-                
+            light.pointLightOuterRadius = 12;
+            animator.SetTrigger("onfire");
+            player.GetComponent<Health>().Heal(heal);
+            _canHeal = false;
         }
     }
 }
