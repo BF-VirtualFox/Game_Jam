@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1126033086163410871, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1477515293157040299, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -415,7 +419,15 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1345170019}
+    - target: {fileID: 2350782931083945058, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1345170019}
     - target: {fileID: 3118647353240341999, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1345170019}
+    - target: {fileID: 3839622898828338463, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1345170019}
@@ -506,6 +518,10 @@ PrefabInstance:
     - target: {fileID: 5055655716335015048, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5579131665015948538, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
+      propertyPath: m_text
+      value: Dark Spark
       objectReference: {fileID: 0}
     - target: {fileID: 6264892501829746411, guid: 13e19d02d34fa964f87440264df07bc6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
