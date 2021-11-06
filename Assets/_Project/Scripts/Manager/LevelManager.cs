@@ -17,37 +17,22 @@ public class LevelManager : MonoBehaviour
         }
         currentScene++;
 
-        if (currentScene > 0) gameUi.SetActive(false);
+        //if (currentScene > 0) gameUi.SetActive(false);
 
         yield return SceneManager.LoadSceneAsync(currentScene, LoadSceneMode.Additive);
         SceneManager.SetActiveScene(SceneManager.GetSceneByBuildIndex(currentScene));
+    }
+
+    public int GetCurrentScene()
+    {
+        return currentScene;
     }
     
     public void MainMenu()
     {
         if (SceneManager.sceneCount > 1)
             SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene().name);
-        gameUi.SetActive(true);
-        //Debug.Log(gameUi.transform.GetC);
         currentScene = 0;
-      //SceneManager.LoadSceneAsync(0);
-    }
-    
-    //Simply display ResumeMenu
-    public void Resume()
-    {
-        //TODO
-    }
-    
-    //
-    public void Quit()
-    {
-        Application.Quit();
-    }
-    
-    public void DisplayDieMenu()
-    {
-        
     }
 
 }
